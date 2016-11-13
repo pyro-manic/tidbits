@@ -7,6 +7,7 @@
 
 //Placeholder for the input string that will be cyphered by the app, TODO: grab this from the DOM with jQuery or React
 let baseInput = "The quick brown fox jumped over the lazy dog";
+let bi2 = "I am so blue I'm greener than purple.";
 
 //Base chance to apply a mod to the sentence on each iteration
 let baseChance = 0.3; 
@@ -25,7 +26,7 @@ let wordList = [
 	{word: '*burp*',mod: Mods.FILL},
 	{word: '*hick*',mod: Mods.FILL},
 	{word: ' sss...', mod: Mods.BREAK},
-	{word: ', Morty!', mod: Mods.BREAK},
+	{word: ', Morty!', mod: Mods.POSTFIX},
 	{word: null, mod: Mods.STUTTER}
 ]
 
@@ -73,6 +74,9 @@ let rickify = (str) => {
 				for (let y = 0; y < rng(2,5); y++) ret += stutter;
 				ret += '...';
 				break;
+			case Mods.POSTFIX:
+				ret += word.word;
+				break;
 		}
 		
 	}
@@ -80,5 +84,4 @@ let rickify = (str) => {
 	return ret;
 	
 }
-console.log(rickify(baseInput));
-//console.log(getRandomWord());
+console.log(rickify(bi2));
