@@ -1,5 +1,5 @@
 /***
-//"Rick and Morty" Rick cypher/converter/whatchmacallit, by Yaniv Sobol (aka Videodrome, Pyro-Manic on Github)
+//"Rick and Morty" Rick cipher/converter, by Yaniv Sobol (aka videodrome)
 ***/
 
 
@@ -25,8 +25,9 @@ let Mods = {
 let wordList = [
 	{word: '*burp*',mod: Mods.FILL},
 	{word: '*hick*',mod: Mods.FILL},
-	{word: ' sss...', mod: Mods.BREAK},
+	//{word: ' sss...', mod: Mods.BREAK}, Deprecated
 	{word: ', Morty!', mod: Mods.POSTFIX},
+	{word: 'Now fetch me the screwdriver!', mod: Mods.POSTFIX},
 	{word: null, mod: Mods.STUTTER}
 ]
 
@@ -76,6 +77,8 @@ let rickify = (str) => {
 				break;
 			case Mods.POSTFIX:
 				ret += word.word;
+				break;
+			default:
 				break;
 		}
 		
