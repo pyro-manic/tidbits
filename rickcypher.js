@@ -11,6 +11,8 @@ let bi2 = "I am so blue I'm greener than purple.";
 
 //Base chance to apply a mod to the sentence on each iteration
 let baseChance = 0.3; 
+//Base chance to append a postfix modification to a sentence
+let postChance = 0.6;
 
 //An enum with identities of different filler words/mods
 let Mods = {
@@ -35,7 +37,7 @@ let wordList = [
 
 /*** Functions ***/
 
-//Generate a random whole number from a range (min and max values inclusive), tested with negative values and 0
+//Generate a random whole number, supports negatives and zeroes
 let rng = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -49,6 +51,7 @@ let capitalize = (str) => { return str[0].toUpperCase() + str.substr(1,str.lengt
 //The main function: take the input string and "rickify" it, return the rickified string
 let rickify = (str) => {
 	
+	str = (Math.random() >== postChance && str[str.length-1] == '.') ? str.slice(0,-1) : str; // Removes the last character of a string if the postfix chance is met
 	let strArr = str.split(' '); //Manufactures an array of words from the input string
 	let ret = ''; //Return string
 	
